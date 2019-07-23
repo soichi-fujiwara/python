@@ -115,6 +115,8 @@ def tanka_pickup(str_wk):
     
   return tanka_str 
 
+import pandas as pd
+
 def tanka_output(pickup_str): 
 
   #======================================================
@@ -158,14 +160,14 @@ def tanka_output(pickup_str):
   if min_tanka == 0 and max_tanka == 0:
     tanka_range = re.findall('~[0-9]{2}',pickup_str)
 
-    #下限算出
-    min_tanka = 0
+  #下限算出
+  min_tanka = 0
 
-    #上限算出
-    if len(tanka_range) == 1:
-      max_tanka = pickup_str.replace("~","") 
-      #数値のみ抽出
-      max_tanka = re.sub(r'\D', '',max_tanka)
+  #上限算出
+  if len(tanka_range) == 1:
+    max_tanka = pickup_str.replace("~","") 
+    #数値のみ抽出
+    max_tanka = re.sub(r'\D', '',max_tanka)
 
   #======================================================
   #単価単独指定(exp:A) 編集
@@ -173,15 +175,15 @@ def tanka_output(pickup_str):
   if min_tanka == 0 and max_tanka == 0:
     tanka_range = re.findall('[0-9]{2}',pickup_str)
 
-    #下限算出
-    if len(tanka_range) == 1:
-      #数値のみ抽出
-      min_tanka = re.sub(r'\D', '',tanka_range[0])
+  #下限算出
+  if len(tanka_range) == 1:
+    #数値のみ抽出
+    min_tanka = re.sub(r'\D', '',tanka_range[0])
 
-    #上限算出
-    if len(tanka_range) == 1:
-      #数値のみ抽出
-      max_tanka = re.sub(r'\D', '',tanka_range[0])
+  #上限算出
+  if len(tanka_range) == 1:
+    #数値のみ抽出
+    max_tanka = re.sub(r'\D', '',tanka_range[0])
 
   #======================================================
   #下限指定(exp:A以上) 編集
@@ -206,6 +208,6 @@ def tanka_output(pickup_str):
     min_tanka = re.sub(r'\D', '',tanka_range[0])
     max_tanka = 99
 
-    #print(str(index) + ":" + pickup_str +"|MIN:" + str(min_tanka) + "|" + "MAX:" + str(max_tanka))
-    ret_word = "MIN:" + str(min_tanka) + "|" + "MAX:" + str(max_tanka)
-    return ret_word
+  #print(str(index) + ":" + pickup_str +"|MIN:" + str(min_tanka) + "|" + "MAX:" + str(max_tanka))
+  ret_word = "MIN:" + str(min_tanka) + "|" + "MAX:" + str(max_tanka)
+  return ret_word
