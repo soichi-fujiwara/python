@@ -18,7 +18,7 @@ def tanka_serialize(words):
       for tel in tel_list:
         words = words.replace(tel,'')
 
-  #チルダ統一1
+  #チルダ統一
   ser_word = ["〜","～", "-","－","から","MAX"]
   for word in ser_word:
     words = words.replace(word,"~")
